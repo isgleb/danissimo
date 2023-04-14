@@ -3,7 +3,7 @@ html{
 }
 
 body{
-    background-color: grey;
+    background-color: #f7f7f7;
 }
 
 .wrapper{
@@ -65,4 +65,11 @@ body{
     position: fixed;
     transform: translate(-50%, 64%);
     width: 76px;
+}
+
+.danissimo-background{
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: relative;
 }

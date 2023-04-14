@@ -1,0 +1,60 @@
+html{
+    zoom: 100% !important;
+}
+
+body{
+    background-color: grey;
+}
+
+.wrapper{
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.sticker{
+    position: absolute;
+    max-width: 270px;
+}
+
+.top{
+    top: 0;
+}
+
+.x-center{
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.y-center{
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
+
+.right{
+    right: 0;
+}
+
+.bottom{
+    bottom: 0;
+}
+
+.bottom-center{
+    bottom: 10vh;
+}
+
+.left{
+    left: 0;
+}
+
+.label {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    transform: translate(0%, -50%);
+}

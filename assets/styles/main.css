@@ -14,43 +14,6 @@ body{
     position: fixed;
 }
 
-.sticker{
-    position: absolute;
-    max-width: 70vw;
-}
-
-.top{
-    top: 0;
-}
-
-.x-center{
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-}
-
-.y-center{
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
-}
-
-.right{
-    right: 0;
-}
-
-.bottom{
-    bottom: 0;
-}
-
-.bottom-center{
-    bottom: 10vh;
-}
-
-.left{
-    left: 0;
-}
-
 .danissimo-background{
     top: 0;
     left: 0;

@@ -1,0 +1,69 @@
+.sticker{
+    position: absolute;
+    max-width: 70vw;
+    transition: all ease-in-out 0.5s;
+}
+
+.top{
+    top: 0;
+}
+
+.x-center{
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.y-center{
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
+
+.right{
+    right: 0;
+}
+
+.bottom{
+    bottom: 0;
+}
+
+.bottom-center{
+    bottom: 10vh;
+}
+
+.left{
+    left: 0;
+}
+
+.top-right-transition{
+    transform: translate(100%, -100%);
+}
+
+.top-transition{
+    transform: translate(0%, -100%);
+}
+
+.top-left-transition{
+    transform: translate(-100%, -100%);
+}
+
+.left-transition{
+    transform: translate(-100%, 0%);
+}
+
+.right-transition{
+    transform: translate(100%, 0%);
+}
+
+.bottom-right-transition{
+    transform: translate(100%, 100%);
+}
+
+.bottom-transition{
+    transform: translate(0%, 200%);
+}
+
+.bottom-left-transition{
+    transform: translate(-100%, 100%);
+}

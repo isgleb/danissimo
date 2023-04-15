@@ -39,7 +39,7 @@ window.onload= async () => {
     }
 
     const label = document.getElementsByClassName('label-wrapper')[0];
-    label?.addEventListener('mousedown', () => {
-        label.addEventListener('mouseup', showAd)
+    label?.addEventListener('touchstart', () => {
+        label.addEventListener('touchend', showAd)
     });
 }

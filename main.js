@@ -18,7 +18,7 @@ window.onload= async () => {
         })
     }
 
-    await showLabel(250)
+    await showLabel(400)
 
 
     function showAd() {
@@ -39,5 +39,7 @@ window.onload= async () => {
     }
 
     const label = document.getElementsByClassName('label-wrapper')[0];
-    label?.addEventListener('click', showAd);
+    label?.addEventListener('mousedown', () => {
+        label.addEventListener('mouseup', showAd)
+    });
 }

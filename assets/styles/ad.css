@@ -1,0 +1,45 @@
+
+.danissimo-background{
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: fixed;
+}
+
+.add-wrapper{
+    z-index: 2;
+    position: absolute;
+}
+
+.enjoy{
+    width: 60%;
+    display: block;
+    margin: 6% auto 0 auto;
+}
+
+.logo{
+    width: 64%;
+    display: block;
+    margin: -2% auto 0 auto;
+}
+
+.packs{
+    width: 80%;
+    display: block;
+    margin: 5% auto 0 auto;
+}
+
+.more-button{
+    width: 80%;
+    display: block;
+    margin: 10% auto;
+    cursor: pointer;
+}
+
+.conditions{
+    display: block;
+    width: 90%;
+    margin: 4% auto;
+}

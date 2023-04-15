@@ -14,46 +14,6 @@ body{
     position: fixed;
 }
 
-.danissimo-background{
-    top: 0;
-    left: 0;
-    width: 100%;
-    position: relative;
-}
-
-.more-button{
-    bottom: 78vh;
-    left: 50%;
-    width: 80%;
-    position: relative;
-    transform: translate(-50%, 0%);
-    cursor: pointer;
-}
-
-.conditions{
-    bottom: 74vh;
-    left: 50%;
-    width: 90%;
-    position: relative;
-    transform: translate(-50%, 0%);
-}
-
-.packs{
-    top: -80vh;
-    left: 50%;
-    width: 84%;
-    position: relative;
-    transform: translate(-50%, 0%);
-}
-
-.logo{
-    top: -84vh;
-    left: 50%;
-    width: 70%;
-    position: relative;
-    transform: translate(-50%, 0%);
-}
-
 .hidden{
     display: none;
 }

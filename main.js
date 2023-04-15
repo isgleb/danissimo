@@ -1,12 +1,5 @@
-// const label = document.getElementsByClassName('label')[0];
-// console.log(label)
 
-
-
-
-
-
-window.onload=function(){
+window.onload= () => {
 
     function keyDown(){
         console.log("sadjfhglkasfghlkashfgk")

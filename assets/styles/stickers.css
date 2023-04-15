@@ -1,6 +1,6 @@
 .sticker{
     position: absolute;
-    max-width: 70vw;
+    max-width: 70%;
     transition: all ease-in-out 0.5s;
 }
 

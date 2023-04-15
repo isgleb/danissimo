@@ -18,22 +18,20 @@ window.onload= async () => {
         })
     }
 
-    await showLabel(500)
+    await showLabel(250)
 
 
     function showAd() {
-        console.log("sadjfhglkasfghlkashfgk")
-        // stickers.classList.add("hidden")
         label.classList.add("wrapper-hidden")
 
-        leftTopSticker.classList.add("top-left-transition")
-        topSticker.classList.add("top-transition")
-        topRightSticker.classList.add("top-right-transition")
-        leftCenterSticker.classList.add("left-transition")
-        rightCenterSticker.classList.add("right-transition")
-        rightBottomSticker.classList.add("bottom-right-transition")
-        leftBottomSticker.classList.add("bottom-left-transition")
-        bottomCenterSticker.classList.add("bottom-transition")
+        leftTopSticker.style.transform= "translate(-100%, -100%)";
+        topSticker.style.transform = "translate(0%, -100%)";
+        topRightSticker.style.transform = "translate(100%, -100%)";
+        leftCenterSticker.style.transform = "translate(-100%, 0%)";
+        rightCenterSticker.style.transform = "translate(100%, 0%)";
+        rightBottomSticker.style.transform = "translate(100%, 100%)";
+        leftBottomSticker.style.transform = "translate(-100%, 100%)";
+        bottomCenterSticker.style.transform = "translate(0%, 200%)";
 
     }
 

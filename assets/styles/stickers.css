@@ -35,35 +35,3 @@
 .left{
     left: 0;
 }
-
-.top-right-transition{
-    transform: translate(100%, -100%);
-}
-
-.top-transition{
-    transform: translate(0%, -100%);
-}
-
-.top-left-transition{
-    transform: translate(-100%, -100%);
-}
-
-.left-transition{
-    transform: translate(-100%, 0%);
-}
-
-.right-transition{
-    transform: translate(100%, 0%);
-}
-
-.bottom-right-transition{
-    transform: translate(100%, 100%);
-}
-
-.bottom-transition{
-    transform: translate(0%, 200%);
-}
-
-.bottom-left-transition{
-    transform: translate(-100%, 100%);
-}

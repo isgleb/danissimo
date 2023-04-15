@@ -27,6 +27,7 @@ body{
     width: 80%;
     position: relative;
     transform: translate(-50%, 0%);
+    cursor: pointer;
 }
 
 .conditions{

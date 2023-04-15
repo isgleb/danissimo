@@ -33,6 +33,9 @@ window.onload= async () => {
         leftBottomSticker.style.transform = "translate(-100%, 100%)";
         bottomCenterSticker.style.transform = "translate(0%, 200%)";
 
+        label.addEventListener("transitionend", ()=>{
+            stickers.style.display="none"
+        });
     }
 
     const label = document.getElementsByClassName('label-wrapper')[0];

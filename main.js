@@ -41,7 +41,7 @@ window.onload= async () => {
 
 
     stickers?.forEach( sticker => {
-        sticker.el?.addEventListener('pointerdown', (event) => {
+        sticker.el?.addEventListener('touchstart', (event) => {
             console.log(event)
             sticker.x = sticker.el.offsetLeft - event.clientX
             sticker.y = sticker.el.offsetTop - event.clientY
@@ -49,7 +49,7 @@ window.onload= async () => {
         }, false)
     })
 
-    document.addEventListener("pointermove", (event) => {
+    document.addEventListener("touchmove", (event) => {
 
         event.preventDefault();
 
@@ -61,7 +61,7 @@ window.onload= async () => {
         }
     },false)
 
-    document.addEventListener('pointerup', function() {
+    document.addEventListener('touchend', function() {
         stickers.forEach( (sticker) => {
             sticker.isDragging = false
         })

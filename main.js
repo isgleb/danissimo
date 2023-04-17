@@ -81,7 +81,7 @@ window.onload= async () => {
     let isDragging = false
     let offset = [0,0];
 
-    topSticker?.addEventListener('touchstart', (event) => {
+    topSticker?.addEventListener('mousedown', (event) => {
         isDragging = true
         console.log(event)
         event.target.offsetLeft
@@ -90,9 +90,9 @@ window.onload= async () => {
             topSticker.offsetLeft - event.clientX,
             topSticker.offsetTop - event.clientY
         ];
-    }, true)
+    }, false)
 
-    document.addEventListener("touchmove", (event) => {
+    document.addEventListener("mousemove", (event) => {
         console.log(event)
         event.preventDefault();
         if (isDragging) {
@@ -101,9 +101,9 @@ window.onload= async () => {
             topSticker.style.top  = (event.clientY + offset[1]) + 'px';
         }
     })
-
-    document.addEventListener('touchend', function() {
-        console.log(event)
-        isDragging = false;
-    }, true);
+    //
+    // document.addEventListener('touchend', function() {
+    //     console.log(event)
+    //     isDragging = false;
+    // }, true);
 }

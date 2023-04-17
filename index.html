@@ -1,38 +1,81 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Danissimo</title>-->
+<!--    <link rel="stylesheet" href="assets/styles/main.css">-->
+<!--    <link rel="stylesheet" href="assets/styles/labelAction.css">-->
+<!--    <link rel="stylesheet" href="assets/styles/stickers.css">-->
+<!--    <link rel="stylesheet" href="assets/styles/ad.css">-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<script src="main.js"></script>-->
+<!--    <div class="danissimo-block wrapper">-->
+<!--        <img class="danissimo-background" src="assets/images/bgr.png"/>-->
+<!--        <div class="add-wrapper">-->
+<!--            <img class="enjoy" src="assets/images/enjoy.png"/>-->
+<!--            <img class="logo" src="assets/images/logo.png"/>-->
+<!--            <img class="packs" src="assets/images/PACKS.png"/>-->
+<!--            <img class="more-button" src="assets/images/btn.png" onclick="location.href='https://ya.ru/'"/>-->
+<!--            <img class="conditions" src="assets/images/conditions.png"/>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <img class="sticker bottom left" src="assets/images/stickers/waterPlants.png"/>-->
+<!--    <img class="sticker bottom right" src="assets/images/stickers/bakePie.png"/>-->
+<!--    <img class="sticker y-center right" src="assets/images/stickers/visitPost.png"/>-->
+<!--    <img class="sticker y-center left" src="assets/images/stickers/finishReport.png"/>-->
+<!--    <img class="sticker top right" src="assets/images/stickers/chooseCooker.png"/>-->
+<!--    <img class="sticker top left" src="assets/images/stickers/ironShirts.png"/>-->
+<!--    <img class="sticker top x-center" src="assets/images/stickers/visitShop.png"/>-->
+<!--    <img class="sticker bottom-center x-center" src="assets/images/stickers/cleanDishes.png"/>-->
+
+<!--    <div class="wrapper-hidden label-wrapper">-->
+<!--        <img class="label" src="assets/images/labelAction.png"/>-->
+<!--    </div>-->
+<!--&lt;!&ndash;    <script src="main.js"></script>&ndash;&gt;-->
+<!--</body>-->
+
+<!--</html>-->
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Danissimo</title>
-    <link rel="stylesheet" href="assets/styles/main.css">
-    <link rel="stylesheet" href="assets/styles/labelAction.css">
-    <link rel="stylesheet" href="assets/styles/stickers.css">
-    <link rel="stylesheet" href="assets/styles/ad.css">
+    <title>Movable Block</title>
+    <style>
+        #block {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
 </head>
 <body>
-    <div class="danissimo-block wrapper">
-        <img class="danissimo-background" src="assets/images/bgr.png"/>
-        <div class="add-wrapper">
-            <img class="enjoy" src="assets/images/enjoy.png"/>
-            <img class="logo" src="assets/images/logo.png"/>
-            <img class="packs" src="assets/images/PACKS.png"/>
-            <img class="more-button" src="assets/images/btn.png" onclick="location.href='https://ya.ru/'"/>
-            <img class="conditions" src="assets/images/conditions.png"/>
-        </div>
-    </div>
+<div id="block"></div>
+<script>
+    var block = document.getElementById("block");
+    var startX, startY, offsetX = 0, offsetY = 0;
 
-    <img class="sticker bottom left" src="assets/images/stickers/waterPlants.png"/>
-    <img class="sticker bottom right" src="assets/images/stickers/bakePie.png"/>
-    <img class="sticker y-center right" src="assets/images/stickers/visitPost.png"/>
-    <img class="sticker y-center left" src="assets/images/stickers/finishReport.png"/>
-    <img class="sticker top right" src="assets/images/stickers/chooseCooker.png"/>
-    <img class="sticker top left" src="assets/images/stickers/ironShirts.png"/>
-    <img class="sticker top x-center" src="assets/images/stickers/visitShop.png"/>
-    <img class="sticker bottom-center x-center" src="assets/images/stickers/cleanDishes.png"/>
+    block.addEventListener("touchstart", function(e) {
+        var touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        offsetX = parseInt(block.style.left) || 0;
+        offsetY = parseInt(block.style.top) || 0;
+        e.preventDefault();
+    }, false);
 
-    <div class="wrapper-hidden label-wrapper">
-        <img class="label" src="assets/images/labelAction.png"/>
-    </div>
-    <script src="main.js"></script>
+    block.addEventListener("touchmove", function(e) {
+        var touch = e.touches[0];
+        var x = touch.clientX - startX + offsetX;
+        var y = touch.clientY - startY + offsetY;
+        block.style.left = x + "px";
+        block.style.top = y + "px";
+        e.preventDefault();
+    }, false);
+</script>
 </body>
-
 </html>

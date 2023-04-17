@@ -1,8 +1,6 @@
 
 window.onload= async () => {
 
-    const stickersWrapper = document.getElementById("stickers-wrapper")
-
     const leftTopSticker = document.getElementsByClassName("sticker top left")[0];
     let topSticker = document.getElementsByClassName("sticker top x-center")[0];
     const topRightSticker = document.getElementsByClassName("sticker top right")[0];
@@ -13,14 +11,14 @@ window.onload= async () => {
     const bottomCenterSticker = document.getElementsByClassName("sticker bottom-center x-center")[0];
 
     const stickers = [
-        leftTopSticker,
-        topSticker,
-        topRightSticker,
-        leftCenterSticker,
-        rightCenterSticker,
-        rightBottomSticker,
-        leftBottomSticker,
-        bottomCenterSticker
+        { el: leftTopSticker, x: 0, y: 0, isDragging: false },
+        { el: topSticker, x: 0, y: 0, isDragging: false },
+        { el: topRightSticker, x: 0, y: 0, isDragging: false},
+        { el: leftCenterSticker, x: 0, y: 0, isDragging: false},
+        { el: rightCenterSticker, x: 0, y: 0, isDragging: false},
+        { el: rightBottomSticker, x: 0, y: 0, isDragging: false},
+        { el: leftBottomSticker, x: 0, y: 0, isDragging: false},
+        { el: bottomCenterSticker, x: 0, y: 0, isDragging: false},
     ]
 
     async function showLabel(delayTime) {
@@ -34,78 +32,37 @@ window.onload= async () => {
 
     function showAd() {
         label.classList.add("wrapper-hidden")
-
-        // stickers.forEach((sticker) => {
-        //     // const xDefault;
-        //     let isDragging = false
-        //     sticker.addEventListener('mousedown', (event) => {
-        //         isDragging = true
-        //         console.log(event)
-        //         event.target.offsetLeft
-        //         event.target.offsetTop
-        //
-        //         // sticker.addEventListener("mousemove", (event) => {
-        //         //     console.log(event)
-        //         //     sticker.style.left = event.clientX;
-        //         //     sticker.style.top = event.clientY;
-        //         // })
-        //     })
-        //
-        //     sticker.addEventListener("mousemove", (event) => {
-        //         if (isDragging) {
-        //             sticker.style.left = event.clientX;
-        //             sticker.style.top = event.clientY;
-        //         }
-        //     })
-        // })
-
-        // leftTopSticker.style.transform= "translate(-100%, -100%)";
-        // topSticker.style.transform = "translate(0%, -100%)";
-        // topRightSticker.style.transform = "translate(100%, -100%)";
-        // leftCenterSticker.style.transform = "translate(-100%, 0%)";
-        // rightCenterSticker.style.transform = "translate(100%, 0%)";
-        // rightBottomSticker.style.transform = "translate(100%, 100%)";
-        // leftBottomSticker.style.transform = "translate(-100%, 100%)";
-        // bottomCenterSticker.style.transform = "translate(0%, 200%)";
-
-        // label.addEventListener("transitionend", ()=>{
-        //     stickersWrapper.style.display="none"
-        // });
     }
 
     const label = document.getElementsByClassName('label-wrapper')[0];
     label?.addEventListener('click', showAd);
 
 
-    let isDragging = false
-    let offset = [0,0];
-
-    topSticker?.addEventListener('pointerdown', (event) => {
-        isDragging = true
-        console.log(event)
-        offset = [
-            topSticker.offsetLeft - event.clientX,
-            topSticker.offsetTop - event.clientY
-        ];
-    }, true)
+    stickers?.forEach( sticker => {
+        sticker.el?.addEventListener('pointerdown', (event) => {
+            sticker.x = sticker.el.offsetLeft - event.clientX
+            sticker.y = sticker.el.offsetTop - event.clientY
+            sticker.isDragging = true
+        }, true)
+    })
 
     document.addEventListener("pointermove", (event) => {
 
         event.preventDefault();
 
-        if (isDragging) {
-            topSticker.style.left = (event.clientX + offset[0]) + 'px';
-            topSticker.style.top  = (event.clientY + offset[1]) + 'px';
+        const sticker = stickers?.filter(sticker => { return sticker.isDragging } )[0]
+
+        if (sticker) {
+            sticker.el.style.left = (event.clientX + sticker.x) + 'px';
+            sticker.el.style.top  = (event.clientY + sticker.y) + 'px';
         }
     },true)
 
     document.addEventListener('pointerup', function() {
         isDragging = false;
+        stickers.forEach( (sticker) => {
+            sticker.isDragging = false
+        })
+
     }, true);
-}
-
-isDragging = true
-
-function dragStart(event){
-    console.log(event)
 }

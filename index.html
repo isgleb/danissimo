@@ -232,9 +232,12 @@
                 initialY = e.clientY - e.target.offsetTop;
             }
 
-            if (e.target === block) {
-                activeBlock = block;
-            }
+            console.log(e.target)
+            // console.log(blocks[i])
+
+            // if (e.target === block) {
+                activeBlock = e.target;
+            // }
         }
 
         function dragEnd(e) {
@@ -263,7 +266,7 @@
                 // xOffset = currentX;
                 // yOffset = currentY;
 
-                setTranslate(currentX, currentY, block);
+                setTranslate(currentX, currentY, e.target);
             }
         }
 

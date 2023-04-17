@@ -4,7 +4,7 @@ window.onload= async () => {
     const stickersWrapper = document.getElementById("stickers-wrapper")
 
     const leftTopSticker = document.getElementsByClassName("sticker top left")[0];
-    const topSticker = document.getElementsByClassName("sticker top x-center")[0];
+    let topSticker = document.getElementsByClassName("sticker top x-center")[0];
     const topRightSticker = document.getElementsByClassName("sticker top right")[0];
     const leftCenterSticker = document.getElementsByClassName("sticker y-center left")[0];
     const rightCenterSticker = document.getElementsByClassName("sticker y-center right")[0];
@@ -80,14 +80,9 @@ window.onload= async () => {
     let isDragging = false
     let offset = [0,0];
 
-    // console.log(topSticker)
-
     topSticker?.addEventListener('pointerdown', (event) => {
         isDragging = true
         console.log(event)
-        // event.target.classList.add("wrapper-hidden")
-        event.target.offsetLeft
-        event.target.offsetTop
         offset = [
             topSticker.offsetLeft - event.clientX,
             topSticker.offsetTop - event.clientY
@@ -97,14 +92,20 @@ window.onload= async () => {
     document.addEventListener("pointermove", (event) => {
 
         event.preventDefault();
+
         if (isDragging) {
-            console.log(event)
             topSticker.style.left = (event.clientX + offset[0]) + 'px';
             topSticker.style.top  = (event.clientY + offset[1]) + 'px';
         }
-    })
+    },true)
 
     document.addEventListener('pointerup', function() {
         isDragging = false;
     }, true);
+}
+
+isDragging = true
+
+function dragStart(event){
+    console.log(event)
 }

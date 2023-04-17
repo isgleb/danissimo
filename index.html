@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/styles/ad.css">
 </head>
 <body>
-<script src="main.js"></script>
+<!--<script src="main.js"></script>-->
 <!--    <div class="danissimo-block wrapper">-->
 <!--        <img class="danissimo-background" src="assets/images/bgr.png"/>-->
 <!--        <div class="add-wrapper">-->
@@ -21,14 +21,14 @@
 <!--        </div>-->
 <!--    </div>-->
 
-    <img class="sticker bottom left" src="assets/images/stickers/waterPlants.png"/>
-    <img class="sticker bottom right" src="assets/images/stickers/bakePie.png"/>
-    <img class="sticker y-center right" src="assets/images/stickers/visitPost.png"/>
-    <img class="sticker y-center left" src="assets/images/stickers/finishReport.png"/>
-    <img class="sticker top right" src="assets/images/stickers/chooseCooker.png"/>
-    <img class="sticker top left" src="assets/images/stickers/ironShirts.png"/>
-    <img class="sticker top x-center" src="assets/images/stickers/visitShop.png"/>
-    <img class="sticker bottom-center x-center" src="assets/images/stickers/cleanDishes.png"/>
+    <img class="sticker bottom left" id="1" src="assets/images/stickers/waterPlants.png"/>
+<!--    <img class="sticker bottom right" src="assets/images/stickers/bakePie.png"/>-->
+<!--    <img class="sticker y-center right" src="assets/images/stickers/visitPost.png"/>-->
+<!--    <img class="sticker y-center left" src="assets/images/stickers/finishReport.png"/>-->
+<!--    <img class="sticker top right" src="assets/images/stickers/chooseCooker.png"/>-->
+<!--    <img class="sticker top left" src="assets/images/stickers/ironShirts.png"/>-->
+<!--    <img class="sticker top x-center" src="assets/images/stickers/visitShop.png"/>-->
+<!--    <img class="sticker bottom-center x-center" src="assets/images/stickers/cleanDishes.png"/>-->
 
 <!--    <div class="wrapper-hidden label-wrapper">-->
 <!--        <img class="label" src="assets/images/labelAction.png"/>-->
@@ -38,14 +38,17 @@
 <script>
     console.log("loaded")
 
-    var leftTopSticker = document.getElementsByClassName("sticker top left")[0];
-    var topSticker = document.getElementsByClassName("sticker top x-center")[0];
-    var topRightSticker = document.getElementsByClassName("sticker top right")[0];
-    var leftCenterSticker = document.getElementsByClassName("sticker y-center left")[0];
-    var rightCenterSticker = document.getElementsByClassName("sticker y-center right")[0];
-    var rightBottomSticker = document.getElementsByClassName("sticker bottom right")[0];
-    var leftBottomSticker = document.getElementsByClassName("sticker bottom left")[0];
-    var bottomCenterSticker = document.getElementsByClassName("sticker bottom-center x-center")[0];
+    // var leftTopSticker = document.getElementsByClassName("sticker top left")[0];
+    // var topSticker = document.getElementsByClassName("sticker top x-center")[0];
+    // var topRightSticker = document.getElementsByClassName("sticker top right")[0];
+    // var leftCenterSticker = document.getElementsByClassName("sticker y-center left")[0];
+    // var rightCenterSticker = document.getElementsByClassName("sticker y-center right")[0];
+    // var rightBottomSticker = document.getElementsByClassName("sticker bottom right")[0];
+    // var leftBottomSticker = document.getElementsByClassName("sticker bottom left")[0];
+
+    var leftBottomSticker = document.getElementById("1");
+
+    // var bottomCenterSticker = document.getElementsByClassName("sticker bottom-center x-center")[0];
 
     // var leftTopSticker = $(".sticker.top.left")[0];
     // var topSticker = $(".sticker.top.x-center")[0];
@@ -56,17 +59,17 @@
     // var leftBottomSticker = $(".sticker.bottom.left")[0];
     // var bottomCenterSticker = $(".sticker.bottom-center.x-center")[0];
 
-    console.log(leftTopSticker)
+    // console.log(leftTopSticker)
 
     var stickers = [
-        { el: leftTopSticker, x: 0, y: 0, isDragging: false },
-        { el: topSticker, x: 0, y: 0, isDragging: false },
-        { el: topRightSticker, x: 0, y: 0, isDragging: false},
-        { el: leftCenterSticker, x: 0, y: 0, isDragging: false},
-        { el: rightCenterSticker, x: 0, y: 0, isDragging: false},
-        { el: rightBottomSticker, x: 0, y: 0, isDragging: false},
+        // { el: leftTopSticker, x: 0, y: 0, isDragging: false },
+        // { el: topSticker, x: 0, y: 0, isDragging: false },
+        // { el: topRightSticker, x: 0, y: 0, isDragging: false},
+        // { el: leftCenterSticker, x: 0, y: 0, isDragging: false},
+        // { el: rightCenterSticker, x: 0, y: 0, isDragging: false},
+        // { el: rightBottomSticker, x: 0, y: 0, isDragging: false},
         { el: leftBottomSticker, x: 0, y: 0, isDragging: false},
-        { el: bottomCenterSticker, x: 0, y: 0, isDragging: false},
+        // { el: bottomCenterSticker, x: 0, y: 0, isDragging: false},
     ]
 
     // async function showLabel(delayTime) {
@@ -88,12 +91,12 @@
     // label?.addEventListener('click', showAd);
 
 
-    stickers?.forEach( sticker => {
-        sticker.el.addEventListener("touchstart", (event) => {
+    // stickers?.forEach( sticker => {
+        stickers[0]?.el?.addEventListener("touchstart", (event) => {
             console.log(event)
-            sticker.x = sticker.el.offsetLeft - event.clientX
-            sticker.y = sticker.el.offsetTop - event.clientY
-            sticker.isDragging = true
+            stickers[0].x = sticker.el.offsetLeft - event.clientX
+            stickers[0].y = sticker.el.offsetTop - event.clientY
+            stickers[0].isDragging = true
         }, false)
 
 
@@ -104,9 +107,9 @@
         //     sticker.y = sticker.el.offsetTop - event.clientY
         //     sticker.isDragging = true
         // }, false)
-    })
+    // })
 
-    document.addEventListener("touchmove", (event) => {
+    stickers[0]?.el?.addEventListener("touchmove", (event) => {
 
         event.preventDefault();
 
@@ -118,10 +121,11 @@
         }
     },false)
 
-    document.addEventListener('touchend', function() {
-        stickers.forEach( (sticker) => {
-            sticker.isDragging = false
-        })
+    stickers[0]?.el?.addEventListener('touchend', function() {
+        stickers[0].isDragging = false
+        // stickers.forEach( (sticker) => {
+        //     stickers[0].isDragging = false
+        // })
     }, false);
 </script>
 

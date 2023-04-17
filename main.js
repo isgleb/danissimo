@@ -1,7 +1,7 @@
 
 window.onload= async () => {
 
-    const stickers = document.getElementById("stickers-wrapper")
+    const stickersWrapper = document.getElementById("stickers-wrapper")
 
     const leftTopSticker = document.getElementsByClassName("sticker top left")[0];
     const topSticker = document.getElementsByClassName("sticker top x-center")[0];
@@ -11,6 +11,17 @@ window.onload= async () => {
     const rightBottomSticker = document.getElementsByClassName("sticker bottom right")[0];
     const leftBottomSticker = document.getElementsByClassName("sticker bottom left")[0];
     const bottomCenterSticker = document.getElementsByClassName("sticker bottom-center x-center")[0];
+
+    const stickers = [
+        leftTopSticker,
+        topSticker,
+        topRightSticker,
+        leftCenterSticker,
+        rightCenterSticker,
+        rightBottomSticker,
+        leftBottomSticker,
+        bottomCenterSticker
+    ]
 
     async function showLabel(delayTime) {
         new Promise(resolve => setTimeout(resolve, delayTime)).finally(() => {
@@ -24,22 +35,73 @@ window.onload= async () => {
     function showAd() {
         label.classList.add("wrapper-hidden")
 
-        leftTopSticker.style.transform= "translate(-100%, -100%)";
-        topSticker.style.transform = "translate(0%, -100%)";
-        topRightSticker.style.transform = "translate(100%, -100%)";
-        leftCenterSticker.style.transform = "translate(-100%, 0%)";
-        rightCenterSticker.style.transform = "translate(100%, 0%)";
-        rightBottomSticker.style.transform = "translate(100%, 100%)";
-        leftBottomSticker.style.transform = "translate(-100%, 100%)";
-        bottomCenterSticker.style.transform = "translate(0%, 200%)";
+        // stickers.forEach((sticker) => {
+        //     // const xDefault;
+        //     let isDragging = false
+        //     sticker.addEventListener('mousedown', (event) => {
+        //         isDragging = true
+        //         console.log(event)
+        //         event.target.offsetLeft
+        //         event.target.offsetTop
+        //
+        //         // sticker.addEventListener("mousemove", (event) => {
+        //         //     console.log(event)
+        //         //     sticker.style.left = event.clientX;
+        //         //     sticker.style.top = event.clientY;
+        //         // })
+        //     })
+        //
+        //     sticker.addEventListener("mousemove", (event) => {
+        //         if (isDragging) {
+        //             sticker.style.left = event.clientX;
+        //             sticker.style.top = event.clientY;
+        //         }
+        //     })
+        // })
 
-        label.addEventListener("transitionend", ()=>{
-            stickers.style.display="none"
-        });
+        // leftTopSticker.style.transform= "translate(-100%, -100%)";
+        // topSticker.style.transform = "translate(0%, -100%)";
+        // topRightSticker.style.transform = "translate(100%, -100%)";
+        // leftCenterSticker.style.transform = "translate(-100%, 0%)";
+        // rightCenterSticker.style.transform = "translate(100%, 0%)";
+        // rightBottomSticker.style.transform = "translate(100%, 100%)";
+        // leftBottomSticker.style.transform = "translate(-100%, 100%)";
+        // bottomCenterSticker.style.transform = "translate(0%, 200%)";
+
+        // label.addEventListener("transitionend", ()=>{
+        //     stickersWrapper.style.display="none"
+        // });
     }
 
     const label = document.getElementsByClassName('label-wrapper')[0];
-    label?.addEventListener('touchstart', () => {
-        label.addEventListener('touchend', showAd)
-    });
+    label?.addEventListener('click', showAd);
+
+
+    let isDragging = false
+    let offset = [0,0];
+
+    topSticker.addEventListener('touchstart', (event) => {
+        isDragging = true
+        console.log(event)
+        event.target.offsetLeft
+        event.target.offsetTop
+        offset = [
+            topSticker.offsetLeft - event.clientX,
+            topSticker.offsetTop - event.clientY
+        ];
+    }, true)
+
+    document.addEventListener("touchmove", (event) => {
+
+        event.preventDefault();
+        if (isDragging) {
+            console.log(event)
+            topSticker.style.left = (event.clientX + offset[0]) + 'px';
+            topSticker.style.top  = (event.clientY + offset[1]) + 'px';
+        }
+    })
+
+    document.addEventListener('touchend', function() {
+        isDragging = false;
+    }, true);
 }

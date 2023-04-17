@@ -39,6 +39,14 @@ window.onload= async () => {
     const label = document.getElementsByClassName('label-wrapper')[0];
     label?.addEventListener('click', showAd);
 
+    function move(event) {
+        event.preventDefault();
+        const sticker = stickers?.filter(sticker => { return sticker.isDragging } )[0]
+        if (sticker) {
+            sticker.el.style.left = (event.clientX + sticker.x) + 'px';
+            sticker.el.style.top  = (event.clientY + sticker.y) + 'px';
+        }
+    }
 
     stickers?.forEach( sticker => {
         sticker.el?.addEventListener('pointerdown', (event) => {
@@ -47,23 +55,15 @@ window.onload= async () => {
             sticker.y = sticker.el.offsetTop - event.clientY
             sticker.isDragging = true
         }, true)
+
+        document.addEventListener("pointermove", move,true)
     })
 
-    document.addEventListener("pointermove", (event) => {
-
-        event.preventDefault();
-
-        const sticker = stickers?.filter(sticker => { return sticker.isDragging } )[0]
-
-        if (sticker) {
-            sticker.el.style.left = (event.clientX + sticker.x) + 'px';
-            sticker.el.style.top  = (event.clientY + sticker.y) + 'px';
-        }
-    },true)
 
     document.addEventListener('pointerup', function() {
         stickers.forEach( (sticker) => {
             sticker.isDragging = false
         })
+        document.removeEventListener("pointermove", move)
     }, true);
 }

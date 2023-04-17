@@ -85,6 +85,7 @@ window.onload= async () => {
     topSticker?.addEventListener('pointerdown', (event) => {
         isDragging = true
         console.log(event)
+        event.target.classList.add("wrapper-hidden")
         event.target.offsetLeft
         event.target.offsetTop
         offset = [

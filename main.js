@@ -85,7 +85,7 @@ window.onload= async () => {
     topSticker?.addEventListener('pointerdown', (event) => {
         isDragging = true
         console.log(event)
-        event.target.classList.add("wrapper-hidden")
+        // event.target.classList.add("wrapper-hidden")
         event.target.offsetLeft
         event.target.offsetTop
         offset = [
@@ -94,7 +94,7 @@ window.onload= async () => {
         ];
     }, true)
 
-    document.addEventListener("touchmove", (event) => {
+    document.addEventListener("pointermove", (event) => {
 
         event.preventDefault();
         if (isDragging) {
@@ -104,7 +104,7 @@ window.onload= async () => {
         }
     })
 
-    document.addEventListener('touchend', function() {
+    document.addEventListener('pointerup', function() {
         isDragging = false;
     }, true);
 }

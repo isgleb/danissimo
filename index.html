@@ -194,14 +194,28 @@
             cursor: grab;
         }
     </style>
+
+        <link rel="stylesheet" href="assets/styles/main.css">
+        <link rel="stylesheet" href="assets/styles/labelAction.css">
+        <link rel="stylesheet" href="assets/styles/stickers.css">
+        <link rel="stylesheet" href="assets/styles/ad.css">
 </head>
 <body>
-<div class="block" style="top: 50px; left: 50px;"></div>
-<div class="block" style="top: 100px; left: 100px;"></div>
-<div class="block" style="top: 150px; left: 150px;"></div>
-<div class="block" style="top: 200px; left: 200px;"></div>
-<div class="block" style="top: 250px; left: 250px;"></div>
-<div class="block" style="top: 300px; left: 300px;"></div>
+<!--<div class="block" style="top: 50px; left: 50px;"></div>-->
+<!--<div class="block" style="top: 100px; left: 100px;"></div>-->
+<!--<div class="block" style="top: 150px; left: 150px;"></div>-->
+<!--<div class="block" style="top: 200px; left: 200px;"></div>-->
+<!--<div class="block" style="top: 250px; left: 250px;"></div>-->
+<!--<div class="block" style="top: 300px; left: 300px;"></div>-->
+
+    <img class="sticker bottom left" id="1" src="assets/images/stickers/waterPlants.png"/>
+    <img class="sticker bottom right" src="assets/images/stickers/bakePie.png"/>
+    <img class="sticker y-center right" src="assets/images/stickers/visitPost.png"/>
+    <img class="sticker y-center left" src="assets/images/stickers/finishReport.png"/>
+    <img class="sticker top right" src="assets/images/stickers/chooseCooker.png"/>
+    <img class="sticker top left" src="assets/images/stickers/ironShirts.png"/>
+    <img class="sticker top x-center" src="assets/images/stickers/visitShop.png"/>
+    <img class="sticker bottom-center x-center" src="assets/images/stickers/cleanDishes.png"/>
 <script>
     let activeBlock = null;
     let initialX = 0;
@@ -211,7 +225,7 @@
     // let xOffset = 0;
     // let yOffset = 0;
 
-    const blocks = document.querySelectorAll('.block');
+    const blocks = document.querySelectorAll('.sticker');
 
     for (let i = 0; i < blocks.length; i++) {
         const block = blocks[i];

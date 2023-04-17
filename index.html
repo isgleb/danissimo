@@ -96,7 +96,7 @@
 
 
     // stickers?.forEach( sticker => {
-        stickers[0]?.el?.addEventListener("touchstart", (event) => {
+    leftBottomSticker.el.addEventListener("touchstart", (event) => {
             console.log(event)
             stickers[0].x = sticker.el.offsetLeft - event.clientX
             stickers[0].y = sticker.el.offsetTop - event.clientY
@@ -113,11 +113,12 @@
         // }, false)
     // })
 
-    stickers[0]?.el?.addEventListener("touchmove", (event) => {
+    leftBottomSticker.el.addEventListener("touchmove", (event) => {
 
         event.preventDefault();
 
-        const sticker = stickers?.filter(sticker => { return sticker.isDragging } )[0]
+        // const sticker = stickers?.filter(sticker => { return sticker.isDragging } )[0]
+        const sticker = leftBottomSticker
 
         if (sticker) {
             sticker.el.style.left = (event.clientX + sticker.x) + 'px';
@@ -125,7 +126,7 @@
         }
     },false)
 
-    stickers[0]?.el?.addEventListener('touchend', function() {
+    leftBottomSticker.el.addEventListener('touchend', function() {
         stickers[0].isDragging = false
         // stickers.forEach( (sticker) => {
         //     stickers[0].isDragging = false

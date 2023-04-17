@@ -23,17 +23,17 @@ window.onload= async () => {
         bottomCenterSticker
     ]
 
-    async function showLabel(delayTime) {
-        new Promise(resolve => setTimeout(resolve, delayTime)).finally(() => {
-            label?.classList.remove("wrapper-hidden");
-        })
-    }
+    // async function showLabel(delayTime) {
+    //     new Promise(resolve => setTimeout(resolve, delayTime)).finally(() => {
+    //         label?.classList.remove("wrapper-hidden");
+    //     })
+    // }
 
-    await showLabel(400)
+    // await showLabel(400)
 
 
     function showAd() {
-        label.classList.add("wrapper-hidden")
+        // label.classList.add("wrapper-hidden")
 
         // stickers.forEach((sticker) => {
         //     // const xDefault;
@@ -73,14 +73,15 @@ window.onload= async () => {
         // });
     }
 
-    const label = document.getElementsByClassName('label-wrapper')[0];
-    label?.addEventListener('click', showAd);
 
+    // const label = document.getElementsByClassName('label-wrapper')[0];
+    // label?.addEventListener('click', showAd);
+    // label.classList.add("wrapper-hidden")
 
     let isDragging = false
     let offset = [0,0];
 
-    topSticker.addEventListener('touchstart', (event) => {
+    topSticker?.addEventListener('touchstart', (event) => {
         isDragging = true
         console.log(event)
         event.target.offsetLeft
@@ -92,7 +93,7 @@ window.onload= async () => {
     }, true)
 
     document.addEventListener("touchmove", (event) => {
-
+        console.log(event)
         event.preventDefault();
         if (isDragging) {
             console.log(event)
@@ -102,6 +103,7 @@ window.onload= async () => {
     })
 
     document.addEventListener('touchend', function() {
+        console.log(event)
         isDragging = false;
     }, true);
 }

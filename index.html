@@ -185,28 +185,13 @@
 <html>
 <head>
     <title>Moveable Blocks</title>
-    <style>
-        .block {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: red;
-            cursor: grab;
-        }
-    </style>
 
-        <link rel="stylesheet" href="assets/styles/main.css">
-        <link rel="stylesheet" href="assets/styles/labelAction.css">
-        <link rel="stylesheet" href="assets/styles/stickers.css">
-        <link rel="stylesheet" href="assets/styles/ad.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/labelAction.css">
+    <link rel="stylesheet" href="assets/styles/stickers.css">
+    <link rel="stylesheet" href="assets/styles/ad.css">
 </head>
 <body>
-<!--<div class="block" style="top: 50px; left: 50px;"></div>-->
-<!--<div class="block" style="top: 100px; left: 100px;"></div>-->
-<!--<div class="block" style="top: 150px; left: 150px;"></div>-->
-<!--<div class="block" style="top: 200px; left: 200px;"></div>-->
-<!--<div class="block" style="top: 250px; left: 250px;"></div>-->
-<!--<div class="block" style="top: 300px; left: 300px;"></div>-->
 
     <img class="sticker bottom left" id="1" src="assets/images/stickers/waterPlants.png"/>
     <img class="sticker bottom right" src="assets/images/stickers/bakePie.png"/>
@@ -216,80 +201,7 @@
     <img class="sticker top left" src="assets/images/stickers/ironShirts.png"/>
     <img class="sticker top x-center" src="assets/images/stickers/visitShop.png"/>
     <img class="sticker bottom-center x-center" src="assets/images/stickers/cleanDishes.png"/>
-<script>
-    let activeBlock = null;
-    let initialX = 0;
-    let initialY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    // let xOffset = 0;
-    // let yOffset = 0;
 
-    const blocks = document.querySelectorAll('.sticker');
-
-    for (let i = 0; i < blocks.length; i++) {
-        const block = blocks[i];
-
-        block.addEventListener('mousedown', dragStart);
-        block.addEventListener('touchstart', dragStart);
-        block.addEventListener('mouseup', dragEnd);
-        block.addEventListener('touchend', dragEnd);
-        block.addEventListener('mousemove', drag);
-        block.addEventListener('touchmove', drag);
-
-        function dragStart(e) {
-            if (e.type === 'touchstart') {
-                initialX = e.touches[0].clientX - e.target.offsetLeft;
-                initialY = e.touches[0].clientY - e.target.offsetTop;
-            } else {
-                initialX = e.clientX - e.target.offsetLeft;
-                initialY = e.clientY - e.target.offsetTop;
-            }
-
-            console.log(e.target)
-            // console.log(blocks[i])
-
-            // if (e.target === block) {
-                activeBlock = e.target;
-            // }
-        }
-
-        function dragEnd(e) {
-            console.log("dragend")
-            initialX = 0;
-            // initialX = currentX;
-            initialY = 0;
-            // initialY = currentY;
-
-            activeBlock = null;
-        }
-
-        function drag(e) {
-            if (activeBlock) {
-                console.log("dragging")
-                e.preventDefault();
-
-                if (e.type === 'touchmove') {
-                    currentX = e.touches[0].clientX - initialX;
-                    currentY = e.touches[0].clientY - initialY;
-                } else {
-                    currentX = e.clientX - initialX;
-                    currentY = e.clientY - initialY;
-                }
-
-                // xOffset = currentX;
-                // yOffset = currentY;
-
-                setTranslate(currentX, currentY, e.target);
-            }
-        }
-
-        function setTranslate(xPos, yPos, el) {
-            el.style.left = xPos + "px";
-            el.style.top = yPos + "px";
-            // el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-        }
-    }
-</script>
+    <script src="newMain.js"></script>
 </body>
 </html>

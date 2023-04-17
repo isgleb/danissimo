@@ -50,6 +50,7 @@ window.onload= async () => {
 
     stickers?.forEach( sticker => {
         sticker.el?.addEventListener('pointerdown', (event) => {
+            event.preventDefault();
             console.log(event)
             sticker.x = sticker.el.offsetLeft - event.clientX
             sticker.y = sticker.el.offsetTop - event.clientY

@@ -1,21 +1,18 @@
 
-const label = document.getElementsByClassName('label-wrapper')[0];
-label?.addEventListener('click', showAd);
+const label = document.getElementById('swipe-label');
+label.addEventListener('click', showAd);
 
-// async function showLabel(delayTime) {
-    new Promise(resolve => setTimeout(resolve, 400)).finally(() => {
-        label?.classList.remove("wrapper-hidden");
-    })
-// }
+new Promise(resolve => setTimeout(resolve, 400))
+    .finally(() => {
+        label.classList.remove("hidden");
+})
 
 function showAd() {
-    label.classList.add("wrapper-hidden")
-    label.addEventListener("transitionend", ()=>{
+    label.classList.add("hidden")
+    label.addEventListener("transitionend", () => {
         label.style.display="none"
     });
 }
-
-// await showLabel(400)
 
 let activeBlock = null;
 let initialX = 0;

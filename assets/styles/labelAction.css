@@ -1,23 +1,29 @@
 
 .label {
     width: 100%;
-    object-fit: contain;
-}
-
-.label-wrapper{
-    opacity: 100%;
-    transition: opacity ease-in-out 0.5s;
     top: 50%;
     left: 0;
-    width: 100%;
+    object-fit: contain;
+    opacity: 100%;
+    transition: opacity ease-in-out 0.5s;
     position: fixed;
     transform: translate(0%, -50%);
 }
 
-.wrapper-right-hidden{
-    transition: all ease-in-out 0.5s;
-    transform: translate(100%, -50%);
-}
-.wrapper-hidden{
-    opacity: 0%;
+/*.label-wrapper{*/
+/*    opacity: 100%;*/
+/*    transition: opacity ease-in-out 0.5s;*/
+/*    top: 50%;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    position: fixed;*/
+/*    transform: translate(0%, -50%);*/
+/*}*/
+
+/*.wrapper-right-hidden{*/
+/*    transition: all ease-in-out 0.5s;*/
+/*    transform: translate(100%, -50%);*/
+/*}*/
+.hidden {
+    opacity: 0;
 }

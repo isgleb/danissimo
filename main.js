@@ -1,18 +1,11 @@
 
 const label = document.getElementById('swipe-label');
-label.addEventListener('click', showAd);
+label.addEventListener('click', () => { label.style.display = "none" } );
 
 new Promise(resolve => setTimeout(resolve, 400))
     .finally(() => {
         label.classList.remove("hidden");
 })
-
-function showAd() {
-    label.classList.add("hidden")
-    label.addEventListener("transitionend", () => {
-        label.style.display="none"
-    });
-}
 
 let activeBlock = null;
 let initialX = 0;

@@ -46,7 +46,7 @@ window.onload= async () => {
             sticker.x = sticker.el.offsetLeft - event.clientX
             sticker.y = sticker.el.offsetTop - event.clientY
             sticker.isDragging = true
-        }, true)
+        }, false)
     })
 
     document.addEventListener("pointermove", (event) => {
@@ -59,11 +59,11 @@ window.onload= async () => {
             sticker.el.style.left = (event.clientX + sticker.x) + 'px';
             sticker.el.style.top  = (event.clientY + sticker.y) + 'px';
         }
-    },true)
+    },false)
 
     document.addEventListener('pointerup', function() {
         stickers.forEach( (sticker) => {
             sticker.isDragging = false
         })
-    }, true);
+    }, false);
 }

@@ -1,16 +1,15 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Danissimo</title>-->
-<!--    <link rel="stylesheet" href="assets/styles/main.css">-->
-<!--    <link rel="stylesheet" href="assets/styles/labelAction.css">-->
-<!--    <link rel="stylesheet" href="assets/styles/stickers.css">-->
-<!--    <link rel="stylesheet" href="assets/styles/ad.css">-->
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>-->
-<!--</head>-->
-<!--<body>-->
-<!--<script src="main.js"></script>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danissimo</title>
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/labelAction.css">
+    <link rel="stylesheet" href="assets/styles/stickers.css">
+    <link rel="stylesheet" href="assets/styles/ad.css">
+</head>
+<body>
+<script src="main.js"></script>
 <!--    <div class="danissimo-block wrapper">-->
 <!--        <img class="danissimo-background" src="assets/images/bgr.png"/>-->
 <!--        <div class="add-wrapper">-->
@@ -22,60 +21,151 @@
 <!--        </div>-->
 <!--    </div>-->
 
-<!--    <img class="sticker bottom left" src="assets/images/stickers/waterPlants.png"/>-->
-<!--    <img class="sticker bottom right" src="assets/images/stickers/bakePie.png"/>-->
-<!--    <img class="sticker y-center right" src="assets/images/stickers/visitPost.png"/>-->
-<!--    <img class="sticker y-center left" src="assets/images/stickers/finishReport.png"/>-->
-<!--    <img class="sticker top right" src="assets/images/stickers/chooseCooker.png"/>-->
-<!--    <img class="sticker top left" src="assets/images/stickers/ironShirts.png"/>-->
-<!--    <img class="sticker top x-center" src="assets/images/stickers/visitShop.png"/>-->
-<!--    <img class="sticker bottom-center x-center" src="assets/images/stickers/cleanDishes.png"/>-->
+    <img class="sticker bottom left" src="assets/images/stickers/waterPlants.png"/>
+    <img class="sticker bottom right" src="assets/images/stickers/bakePie.png"/>
+    <img class="sticker y-center right" src="assets/images/stickers/visitPost.png"/>
+    <img class="sticker y-center left" src="assets/images/stickers/finishReport.png"/>
+    <img class="sticker top right" src="assets/images/stickers/chooseCooker.png"/>
+    <img class="sticker top left" src="assets/images/stickers/ironShirts.png"/>
+    <img class="sticker top x-center" src="assets/images/stickers/visitShop.png"/>
+    <img class="sticker bottom-center x-center" src="assets/images/stickers/cleanDishes.png"/>
 
 <!--    <div class="wrapper-hidden label-wrapper">-->
 <!--        <img class="label" src="assets/images/labelAction.png"/>-->
 <!--    </div>-->
-<!--&lt;!&ndash;    <script src="main.js"></script>&ndash;&gt;-->
-<!--</body>-->
+<!--    <script src="main.js"></script>-->
 
-<!--</html>-->
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Movable Block</title>
-    <style>
-        #block {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background-color: blue;
-        }
-    </style>
-</head>
-<body>
-<div id="block"></div>
 <script>
-    var block = document.getElementById("block");
-    var startX, startY, offsetX = 0, offsetY = 0;
+    console.log("loaded")
 
-    block.addEventListener("touchstart", function(e) {
-        var touch = e.touches[0];
-        startX = touch.clientX;
-        startY = touch.clientY;
-        offsetX = parseInt(block.style.left) || 0;
-        offsetY = parseInt(block.style.top) || 0;
-        e.preventDefault();
-    }, false);
+    var leftTopSticker = document.getElementsByClassName("sticker top left")[0];
+    var topSticker = document.getElementsByClassName("sticker top x-center")[0];
+    var topRightSticker = document.getElementsByClassName("sticker top right")[0];
+    var leftCenterSticker = document.getElementsByClassName("sticker y-center left")[0];
+    var rightCenterSticker = document.getElementsByClassName("sticker y-center right")[0];
+    var rightBottomSticker = document.getElementsByClassName("sticker bottom right")[0];
+    var leftBottomSticker = document.getElementsByClassName("sticker bottom left")[0];
+    var bottomCenterSticker = document.getElementsByClassName("sticker bottom-center x-center")[0];
 
-    block.addEventListener("touchmove", function(e) {
-        var touch = e.touches[0];
-        var x = touch.clientX - startX + offsetX;
-        var y = touch.clientY - startY + offsetY;
-        block.style.left = x + "px";
-        block.style.top = y + "px";
-        e.preventDefault();
+    // var leftTopSticker = $(".sticker.top.left")[0];
+    // var topSticker = $(".sticker.top.x-center")[0];
+    // var topRightSticker = $(".sticker.top.right")[0];
+    // var leftCenterSticker = $(".sticker.y-center.left")[0];
+    // var rightCenterSticker = $(".sticker.y-center.right")[0];
+    // var rightBottomSticker = $(".sticker.bottom.right")[0];
+    // var leftBottomSticker = $(".sticker.bottom.left")[0];
+    // var bottomCenterSticker = $(".sticker.bottom-center.x-center")[0];
+
+    console.log(leftTopSticker)
+
+    var stickers = [
+        { el: leftTopSticker, x: 0, y: 0, isDragging: false },
+        { el: topSticker, x: 0, y: 0, isDragging: false },
+        { el: topRightSticker, x: 0, y: 0, isDragging: false},
+        { el: leftCenterSticker, x: 0, y: 0, isDragging: false},
+        { el: rightCenterSticker, x: 0, y: 0, isDragging: false},
+        { el: rightBottomSticker, x: 0, y: 0, isDragging: false},
+        { el: leftBottomSticker, x: 0, y: 0, isDragging: false},
+        { el: bottomCenterSticker, x: 0, y: 0, isDragging: false},
+    ]
+
+    // async function showLabel(delayTime) {
+    //     new Promise(resolve => setTimeout(resolve, delayTime)).finally(() => {
+    //         label?.classList.remove("wrapper-hidden");
+    //     })
+    // }
+    //
+    // await showLabel(400)
+
+    // function showAd() {
+    //     label.classList.add("wrapper-hidden")
+    //     label.addEventListener("transitionend", ()=>{
+    //         label.style.display="none"
+    //     });
+    // }
+    //
+    // const label = document.getElementsByClassName('label-wrapper')[0];
+    // label?.addEventListener('click', showAd);
+
+
+    stickers?.forEach( sticker => {
+        sticker.el.addEventListener("touchstart", (event) => {
+            console.log(event)
+            sticker.x = sticker.el.offsetLeft - event.clientX
+            sticker.y = sticker.el.offsetTop - event.clientY
+            sticker.isDragging = true
+        }, false)
+
+
+
+        // sticker.el?.addEventListener('touchstart', (event) => {
+        //     console.log(event)
+        //     sticker.x = sticker.el.offsetLeft - event.clientX
+        //     sticker.y = sticker.el.offsetTop - event.clientY
+        //     sticker.isDragging = true
+        // }, false)
+    })
+
+    document.addEventListener("touchmove", (event) => {
+
+        event.preventDefault();
+
+        const sticker = stickers?.filter(sticker => { return sticker.isDragging } )[0]
+
+        if (sticker) {
+            sticker.el.style.left = (event.clientX + sticker.x) + 'px';
+            sticker.el.style.top  = (event.clientY + sticker.y) + 'px';
+        }
+    },false)
+
+    document.addEventListener('touchend', function() {
+        stickers.forEach( (sticker) => {
+            sticker.isDragging = false
+        })
     }, false);
 </script>
+
 </body>
+
 </html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Movable Block</title>-->
+<!--    <style>-->
+<!--        #block {-->
+<!--            position: absolute;-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-color: blue;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="block"></div>-->
+<!--<script>-->
+<!--    var block = document.getElementById("block");-->
+<!--    var startX, startY, offsetX = 0, offsetY = 0;-->
+
+<!--    block.addEventListener("touchstart", function(e) {-->
+<!--        var touch = e.touches[0];-->
+<!--        startX = touch.clientX;-->
+<!--        startY = touch.clientY;-->
+<!--        offsetX = parseInt(block.style.left) || 0;-->
+<!--        offsetY = parseInt(block.style.top) || 0;-->
+<!--        e.preventDefault();-->
+<!--    }, false);-->
+
+<!--    block.addEventListener("touchmove", function(e) {-->
+<!--        var touch = e.touches[0];-->
+<!--        var x = touch.clientX - startX + offsetX;-->
+<!--        var y = touch.clientY - startY + offsetY;-->
+<!--        block.style.left = x + "px";-->
+<!--        block.style.top = y + "px";-->
+<!--        e.preventDefault();-->
+<!--    }, false);-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

@@ -208,28 +208,28 @@
     let initialY = 0;
     let currentX = 0;
     let currentY = 0;
-    let xOffset = 0;
-    let yOffset = 0;
+    // let xOffset = 0;
+    // let yOffset = 0;
 
     const blocks = document.querySelectorAll('.block');
 
     for (let i = 0; i < blocks.length; i++) {
         const block = blocks[i];
 
-        // block.addEventListener('mousedown', dragStart);
+        block.addEventListener('mousedown', dragStart);
         block.addEventListener('touchstart', dragStart);
-        // block.addEventListener('mouseup', dragEnd);
+        block.addEventListener('mouseup', dragEnd);
         block.addEventListener('touchend', dragEnd);
-        // block.addEventListener('mousemove', drag);
+        block.addEventListener('mousemove', drag);
         block.addEventListener('touchmove', drag);
 
         function dragStart(e) {
             if (e.type === 'touchstart') {
-                initialX = e.touches[0].clientX - xOffset;
-                initialY = e.touches[0].clientY - yOffset;
+                initialX = e.touches[0].clientX - e.target.offsetLeft;
+                initialY = e.touches[0].clientY - e.target.offsetTop;
             } else {
-                initialX = e.clientX - xOffset;
-                initialY = e.clientY - yOffset;
+                initialX = e.clientX - e.target.offsetLeft;
+                initialY = e.clientY - e.target.offsetTop;
             }
 
             if (e.target === block) {
@@ -238,14 +238,18 @@
         }
 
         function dragEnd(e) {
-            initialX = currentX;
-            initialY = currentY;
+            console.log("dragend")
+            initialX = 0;
+            // initialX = currentX;
+            initialY = 0;
+            // initialY = currentY;
 
             activeBlock = null;
         }
 
         function drag(e) {
             if (activeBlock) {
+                console.log("dragging")
                 e.preventDefault();
 
                 if (e.type === 'touchmove') {
@@ -256,8 +260,8 @@
                     currentY = e.clientY - initialY;
                 }
 
-                xOffset = currentX;
-                yOffset = currentY;
+                // xOffset = currentX;
+                // yOffset = currentY;
 
                 setTranslate(currentX, currentY, block);
             }

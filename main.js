@@ -29,13 +29,11 @@ window.onload= async () => {
 
     await showLabel(400)
 
-
     function showAd() {
         label.classList.add("wrapper-hidden")
-        // label.style.display="none"
         label.addEventListener("transitionend", ()=>{
                 label.style.display="none"
-            });
+        });
     }
 
     const label = document.getElementsByClassName('label-wrapper')[0];
@@ -64,10 +62,8 @@ window.onload= async () => {
     },true)
 
     document.addEventListener('pointerup', function() {
-        isDragging = false;
         stickers.forEach( (sticker) => {
             sticker.isDragging = false
         })
-
     }, true);
 }

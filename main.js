@@ -32,6 +32,10 @@ window.onload= async () => {
 
     function showAd() {
         label.classList.add("wrapper-hidden")
+        // label.style.display="none"
+        label.addEventListener("transitionend", ()=>{
+                label.style.display="none"
+            });
     }
 
     const label = document.getElementsByClassName('label-wrapper')[0];
@@ -40,6 +44,7 @@ window.onload= async () => {
 
     stickers?.forEach( sticker => {
         sticker.el?.addEventListener('pointerdown', (event) => {
+            console.log(event)
             sticker.x = sticker.el.offsetLeft - event.clientX
             sticker.y = sticker.el.offsetTop - event.clientY
             sticker.isDragging = true

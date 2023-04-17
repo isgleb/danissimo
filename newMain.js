@@ -45,16 +45,19 @@ function dragEnd(e) {
 function drag(e) {
     if (activeBlock) {
         e.preventDefault();
-        let currentX;
-        let currentY;
+        // let currentX;
+        // let currentY;
 
-        if (e.type === 'touchmove') {
-            currentX = e.touches[0].clientX - initialX;
-            currentY = e.touches[0].clientY - initialY;
-        } else {
-            currentX = e.clientX - initialX;
-            currentY = e.clientY - initialY;
-        }
+        let currentX = e.touches[0].clientX - initialX;
+        let currentY = e.touches[0].clientY - initialY;
+
+        // if (e.type === 'touchmove') {
+        //     currentX = e.touches[0].clientX - initialX;
+        //     currentY = e.touches[0].clientY - initialY;
+        // } else {
+        //     currentX = e.clientX - initialX;
+        //     currentY = e.clientY - initialY;
+        // }
         e.target.style.left = currentX + "px";
         e.target.style.top = currentY + "px";
     }

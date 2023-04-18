@@ -2,10 +2,7 @@
 const label = document.getElementById('swipe-label');
 label.addEventListener('click', () => { label.style.display = "none" } );
 
-new Promise(resolve => setTimeout(resolve, 400))
-    .finally(() => {
-        label.classList.remove("hidden");
-})
+setTimeout( () => { label.classList.remove("hidden") }, 400)
 
 let activeBlock = null;
 let initialX = 0;
